@@ -9,7 +9,7 @@ app.use(static(path.join(__dirname, '/')));
 
 app.set('port',process.env.PORT || 8080);
 app.get('/', function(req,res){
-  res.redirect('index.html');
+  res.redirect('fullvideo-result.html');
 });
 
 http.createServer(app).listen(app.get('port'),function(){

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/jquery.lightbox.css" media="screen" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="js/jquery.lightbox.min.js"></script>
+    <script>
+      //.ready : body가 끝난 뒤에, 실행한다라는 뜻 --> scripy 맨 위에 쓰고 싶을 때!!
+      $(document).ready(function(){
+        $('a.light').lightBox();
+      });
+    </script>
+    <style>
+     a:visited {
+       text-decoration: none;
+     }
+    </style>
+  </head>
+  <body>
+    <a class = "light" href = "photos/photo0.png">LightBox 예시 1</a>
+    <a class = "light" href = "photos/photo1.png">LightBox 예시 2</a>
+    <a class = "light" href = "photos/photo2.png">LightBox 예시 3</a>
+  </body>
+</html>
