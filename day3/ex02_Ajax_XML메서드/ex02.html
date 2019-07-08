@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+  <body>
+    <h1>인기 검색어</h1>
+    <div id="wrap">
+      <ol></ol>
+    </div>
+  </body>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $.ajax({
+        url: "rank.xml",
+        dataType: "xml",
+        success: function(result) {
+          if ($(result).find("rank").length > 0) {
+            $.ajax()
+            $(result).find("rank").each(function() {
+              var name = $(this).find("k").text();
+              var list = "<li>" + name + "</li>";
+              $("#wrap ol").append(list);
+            });
+          }
+        }
+      });
+    });
+  </script>
+
+</html>
