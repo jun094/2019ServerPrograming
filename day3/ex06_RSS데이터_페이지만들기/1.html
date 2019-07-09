@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>날씨 정보 | injun </title>
+    <!-- jquery load cdn -->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+    <!-- google web font cdn-->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        html {
+            background: -webkit-linear-gradient(#341f97, #341f97);
+            background: -moz-linear-gradient(#341f97, #341f97);
+            background: -ms-linear-gradient(#341f97, #341f97);
+            background: -o-linear-gradient(#341f97, #341f97);
+            background: linear-gradient(#341f97, #341f97);
+            min-height: 100%;
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+
+        body {
+            text-align: center;
+        }
+
+
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .box select {
+            background-color: #0563af;
+            color: white;
+            padding: 12px;
+            width: 200px;
+            border: none;
+            font-size: 20px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            -webkit-appearance: button;
+            appearance: button;
+            outline: none;
+        }
+
+        .box::before {
+            content: "\f13a";
+            font-family: FontAwesome;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20%;
+            height: 100%;
+            text-align: center;
+            font-size: 28px;
+            line-height: 45px;
+            color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+
+        .box:hover::before {
+            color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .box select option {
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="box">
+            <select id="weatherSelector" onchange="weather()">
+                <option value='-1' selected>지역</option>
+                <option value="0">서울</option>
+                <option value="1">인천</option>
+                <option value="2">수원</option>
+                <option value="3">파주</option>
+                <option value="4">이천</option>
+                <option value="5">평택</option>
+                <option value="6">춘천</option>
+                <option value="7">원주</option>
+                <option value="8">강릉</option>
+                <option value="9">대전</option>
+                <option value="10">세종</option>
+                <option value="11">홍성</option>
+                <option value="12">청주</option>
+                <option value="13">충주</option>
+                <option value="14">영동</option>
+                <option value="15">광주</option>
+                <option value="16">목포</option>
+                <option value="17">여수</option>
+                <option value="18">순천</option>
+                <option value="19">광양</option>
+                <option value="20">나주</option>
+                <option value="21">전주</option>
+                <option value="22">군산</option>
+                <option value="23">정읍</option>
+                <option value="24">남원</option>
+                <option value="25">고창</option>
+                <option value="26">무주</option>
+                <option value="27">부산</option>
+                <option value="28">울산</option>
+                <option value="29">창원</option>
+                <option value="30">진주</option>
+                <option value="31">거창</option>
+                <option value="32">통영</option>
+                <option value="33">대구</option>
+                <option value="34">안동</option>
+                <option value="35">포항</option>
+                <option value="36">경주</option>
+                <option value="37">울진</option>
+                <option value="38">울릉도</option>
+                <option value="39">제주</option>
+                <option value="40">서귀포</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">날씨</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var weather = function () {
+
+        var select = $("#weatherSelector option:selected").val();
+
+
+        if (select != -1) {
+
+            var xmlhttp = new XMLHttpRequest();
+            var url = "";
+
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var result = this.responseXML;
+                    var test = $('<div></div>');
+
+                    result = result.getElementsByTagName("channel")[0];
+                    result = result.getElementsByTagName("item")[0];
+                    result = result.getElementsByTagName("description")[0];
+                    result = result.getElementsByTagName("body")[0];
+                    result = result.getElementsByTagName("location")[Number(select)];
+
+                    for (i = 0; i < 13; i++) {
+                        data = result.getElementsByTagName("data")[i];
+
+                        tmEF = $(data).find('tmEf').text()
+                        wf = $(data).find('wf').text()
+                        tmn = $(data).find('tmn').text()
+                        tmx = $(data).find('tmx').text()
+
+                        test.append("<h5>" + tmEF + "</h5>" + "<p>날씨: " + wf + "</p>" + "<p>최저기온: " + tmn +
+                            "</p>" +
+                            "<p>최고기온: " +
+                            tmx + "</p>")
+
+                    }
+
+                    $('#exampleModalLong').modal('show');
+
+                    $('#exampleModalLong .modal-body').html(test);
+
+
+                }
+            };
+            xmlhttp.open("GET", "http://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=108");
+            xmlhttp.send();
+
+        }
+
+    }
+
+    // $(document).ready(function () {
+    //     weather();
+    // });
+</script>
+
+</html>
